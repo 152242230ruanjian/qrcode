@@ -1,0 +1,66 @@
+#include <iostream>
+#include<cstdio>
+#include<algorithm>
+#include<cstring>
+#include<cmath>
+using namespace std;
+#define ll long long
+double dis(double x1,double y1,double z1, double x2,double y2,double z2)
+{
+    return   sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+}
+int main()
+{
+    int T;
+    double x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4;
+    scanf("%d",&T);
+    while(T--)
+    {
+        scanf("%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf",&x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&x4,&y4,&z4);
+        double x0=x2-x1;
+        double y0=y2-y1;
+        double z0=z2-z1;
+        double nx=x4-x3;
+        double ny=y4-y3;
+        double nz=z4-z3;
+
+
+        //公共向量
+        double xx=y0*nz-z0*ny;
+        double yy=z0*nx-x0*nz;
+        double zz=x0*ny-y0*nx;
+
+        //p1
+        double px=yy*z0-zz*y0;
+        double py=zz*x0-xx*z0;
+        double pz=xx*y0-yy*x0;
+
+        double t=((x1-x3)*px+(y1-y3)*py+(z1-z3)*pz)/(px*nx+py*ny+pz*nz);
+
+        double ansx=nx*t+x3;
+        double ansy=ny*t+y3;
+        double ansz=nz*t+z3;
+
+        double px1=yy*nz-zz*ny;
+        double py1=zz*nx-xx*nz;
+        double pz1=xx*ny-yy*nx;
+
+        double t1=((x3-x1)*px1+(y3-y1)*py1+(z3-z1)*pz1)/(px1*x0+py1*y0+pz1*z0);
+        double ax=x0*t1+x1;
+        double ay=y0*t1+y1;
+        double az=z0*t1+z1;
+
+
+        printf("%.6lf\n",dis(ansx,ansy,ansz,ax,ay,az));
+        printf("%.6lf %.6lf %.6lf %.6lf %.6lf %.6lf\n",ansx,ansy,ansz,ax,ay,az);
+    }
+    return 0;
+}
+
+
+/*
+45
+1 0 1 1 2 3 1 0 2 3 1 1
+0 0 0 1 0 1 2 2 3 3 1 1
+1 1 1 1 3 3 2 0 3 3 1 0
+*/

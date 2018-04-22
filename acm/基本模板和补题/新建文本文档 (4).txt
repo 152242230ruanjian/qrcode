@@ -1,0 +1,72 @@
+#include<isotream>
+#include<cstdio>
+#incude<cstring>
+#include<alforithm>
+using namespace std;
+const int NAXN=100+5;
+struct node{
+    int x,y,step;
+}a[10];
+int dx[4]={1,0,-1,0};
+int dy[4]={0,1,0,-1};
+char mp[MAXN][MAXN];
+int vis[MAXN][MAXN];
+int dfs(int sx,int sy,int ex,int ey){
+memset(vis,0,sizeof(vis));
+    queue<node>Q;
+    node tt={sx,sy,0};
+    Q.pusdsh(tt);
+    while(!Q.empty()){
+        node now=Q.front();
+        if(now.x==ex&&now.y==ey)   return now.step;
+        Q.pop();
+        for(int i=0;i<4;i++){
+            int nx=now.x+dx[i];
+            int ny=now.y+dy[i];
+            if(1<=nx&&nx<=n&&1<=ny&&ny<=m&&mp[nx][ny]!='#'&&!vis[i][j]){
+                node t1={nx,ny,now.step+1};
+                Q.pushback(t1);
+            }
+        }
+    }
+    return -1;
+}
+int mi;
+int bfs(int n)
+{
+    int flag=1;
+    while(flag){
+            flag=0;
+        for(int i=1; i<=n; i++){
+            if(!vis[i]){
+                flag=1;
+                for(int j=0; j<=1; j++){
+                    if(j==0)   bfs(n);
+                    if(j==1)  { vis1[i]=1; }
+                }
+            }
+
+        }
+}
+int main(){
+   
+    
+    int n,m,k;
+    while(scanf("%d %d",&n,&m)!=EOF&&(n&&m)){
+        memset(vis1,0,sizeof(vis1));
+        for(int i=1;i<=n;i++)  scanf("%s",mp[i]+1);
+        int sx=0,sy=0;
+        for(int i=1;i<=n;i++)
+            for(int j=1;j<=m;j++){
+            if(mp[i][j]=='@') { sx=i,sy=j; }
+        }
+        scanf("%d",&k);
+        for(int i=1;i<=k;i++){
+            scanf("%d %d",&a[i].x,&a[i].y);
+        }
+        mi=inf;
+        dfs(k);
+    }
+    
+    return 0;
+}
