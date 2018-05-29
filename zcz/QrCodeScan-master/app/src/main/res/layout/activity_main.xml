@@ -55,6 +55,13 @@
         android:layout_below="@id/QrCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="跳转"
+        android:text="登录"
+        />
+    <Button
+        android:id="@+id/to_register"
+        android:layout_below="@id/tiaozhuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
         />
 </RelativeLayout>

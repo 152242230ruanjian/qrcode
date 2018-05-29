@@ -28,6 +28,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class MainscannerActivity extends AppCompatActivity {
     Button tiaozhuan;
+    Button to_register;
     @BindView(R.id.openQrCodeScan)
     Button openQrCodeScan;
     @BindView(R.id.text)
@@ -49,7 +50,15 @@ public class MainscannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tiaozhuan=(Button)findViewById(R.id.tiaozhuan);
+        to_register=(Button)findViewById(R.id.to_register);
         tiaozhuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainscannerActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        to_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainscannerActivity.this,Register.class);
@@ -58,7 +67,7 @@ public class MainscannerActivity extends AppCompatActivity {
         });
         Bmob.initialize(this, "2b78e28cc371b21beea7352333b297f5");
         Person p2 = new Person();
-        p2.setName("lucky");
+        p2.setName("lucky111");
         p2.setAddress("北京海淀");
         p2.setpassword("123456");
         p2.setEmail("150150");
