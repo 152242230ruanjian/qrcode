@@ -52,7 +52,7 @@ public class MainscannerActivity extends AppCompatActivity {
         tiaozhuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainscannerActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainscannerActivity.this,Register.class);
                 startActivity(intent);
             }
         });
@@ -61,6 +61,7 @@ public class MainscannerActivity extends AppCompatActivity {
         p2.setName("lucky");
         p2.setAddress("北京海淀");
         p2.setpassword("123456");
+        p2.setEmail("150150");
         p2.save(new SaveListener<String>() {
             @Override
             public void done(String objectId,BmobException e) {

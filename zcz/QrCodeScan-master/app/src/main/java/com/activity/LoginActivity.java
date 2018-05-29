@@ -92,7 +92,7 @@ public class  LoginActivity extends AppCompatActivity {
                     query.addWhereEqualTo("name", edit_yhm.getText());
                     query.addWhereEqualTo("password", edit_mm.getText());
                     Toast.makeText(LoginActivity.this,edit_yhm.getText()+"   "+edit_mm.getText(), Toast.LENGTH_SHORT).show();
-                    query.setLimit(50);
+                    //query.setLimit(50);
                     query.findObjects(new FindListener<Person>() {
                         @Override
                         public void done(List<Person> object, BmobException e) {
@@ -106,14 +106,15 @@ public class  LoginActivity extends AppCompatActivity {
                                     //if (edit_mm.getText().toString()==i.getpassword())
                                         iscorrect = true;
                                     Toast.makeText(LoginActivity.this, i.getName()+i.getpassword()+iscorrect, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this, MainscannerActivity.class);
-                                    startActivity(intent);
+                                    //Intent intent = new Intent(LoginActivity.this, MainscannerActivity.class);
+                                   // startActivity(intent);
                                 }
+                                if(!iscorrect) Toast.makeText(LoginActivity.this, "密码错误!", Toast.LENGTH_SHORT).show();
+                                if(iscorrect) Toast.makeText(LoginActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-                    //if(!iscorrect) Toast.makeText(LoginActivity.this, "密码错误!", Toast.LENGTH_SHORT).show();
-                    //if(iscorrect) Toast.makeText(LoginActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
