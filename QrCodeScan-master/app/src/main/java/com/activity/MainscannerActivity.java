@@ -3,6 +3,7 @@ package com.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.images.WebImage;
 import com.google.zxing.WriterException;
 import com.google.zxing.activity.CaptureActivity;
 import com.google.zxing.encoding.EncodingHandler;
@@ -20,6 +22,9 @@ import com.utils.CommonUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 public class MainscannerActivity extends AppCompatActivity {
 
@@ -43,7 +48,25 @@ public class MainscannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bmob.initialize(this, "c1bc2aa23ea8c145b823409180d3ec8e");
+        Person p2 = new Person();
+        p2.setName("lucky");
+        p2.setAddress("北京海淀");
+        p2.save(new SaveListener<String>() {
+            @Override
+            public void done(String objectId,BmobException e) {
+                if(e==null){
+                  //  Toast("添加数据成功，返回objectId为："+objectId);
+                }else{
+                 //   Toast("创建数据失败：" + e.getMessage());
+                }
+            }
+        });
         ButterKnife.bind(this);
+
+       ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.hide();
     }
 
     @OnClick({R.id.openQrCodeScan, R.id.CreateQrCode})
@@ -88,6 +111,9 @@ public class MainscannerActivity extends AppCompatActivity {
             String scanResult = bundle.getString("qr_scan_result");
             //将扫描出的信息显示出来
             qrCodeText.setText(scanResult);
+            Intent intent = new Intent(MainscannerActivity.this, WebActivity.class);
+            intent.putExtra("web_scanResult",scanResult);
+            startActivity(intent);
         }
     }
 }

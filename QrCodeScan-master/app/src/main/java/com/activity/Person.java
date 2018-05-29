@@ -1,9 +1,9 @@
-package com.example.zcz.try__tran_page;
+package com.activity;
 
-        import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobObject;
 
 /**
- * Created by ZCZ on 2018/4/7.
+ * Created by ji on 2018/5/29.
  */
 
 public class Person extends BmobObject {
