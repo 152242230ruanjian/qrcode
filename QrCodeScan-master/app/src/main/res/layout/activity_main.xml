@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dencode_qrcode"
         />
+
     <TextView
         android:id="@+id/qrCodeText"
         android:layout_below="@id/openQrCodeScan"
@@ -48,4 +49,19 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         android:src="@mipmap/ic_launcher"/>
+
+    <Button
+        android:id="@+id/tiaozhuan"
+        android:layout_below="@id/QrCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        />
+    <Button
+        android:id="@+id/to_register"
+        android:layout_below="@id/tiaozhuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        />
 </RelativeLayout>
