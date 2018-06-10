@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.qrcodescan.R;
 import com.qrcodescan.R2;
@@ -28,7 +29,7 @@ public class  LoginActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     EditText edit_yhm;
     EditText edit_mm;
-    boolean iscorrect;
+    boolean iscorrect;boolean flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class  LoginActivity extends AppCompatActivity {
         Button login=(Button)findViewById(R.id.login);
         rememberPass=(CheckBox) findViewById(R.id.remember_pass);
         iscorrect=false;
+
         //boolean isRemember =pref.getBoolean("remember_password",false);
        // boolean isautologin=pref.getBoolean("auto_login",false);
         /*if(isRemember){
@@ -77,6 +79,7 @@ public class  LoginActivity extends AppCompatActivity {
                 }
             }
         });*/
+
         login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -91,31 +94,48 @@ public class  LoginActivity extends AppCompatActivity {
                     BmobQuery<Person> query = new BmobQuery<Person>();
                     query.addWhereEqualTo("name", edit_yhm.getText());
                     query.addWhereEqualTo("password", edit_mm.getText());
+               //     query.addWhereEqualTo("isadmin", "1");
                     Toast.makeText(LoginActivity.this,edit_yhm.getText()+"   "+edit_mm.getText(), Toast.LENGTH_SHORT).show();
                     //query.setLimit(50);
                     query.findObjects(new FindListener<Person>() {
                         @Override
                         public void done(List<Person> object, BmobException e) {
                             if (e == null) {
-                                Toast.makeText(LoginActivity.this, "AAAA+bbcccc"+"  "+object.size(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "AAAA+bbcccc" + "  " + object.size(), Toast.LENGTH_SHORT).show();
                                 //toast("查询年龄6-29岁之间，姓名以'y'或者'e'结尾的人个数："+object.size());
                                 //Toast.makeText(tickets.this,String.valueOf(object.size()), Toast.LENGTH_SHORT).show();
                                 for (Person i : object) {
 
                                     //Toast.makeText(tickets.this,i.getName(), Toast.LENGTH_SHORT).show();
                                     //if (edit_mm.getText().toString()==i.getpassword())
-                                        iscorrect = true;
-                                    Toast.makeText(LoginActivity.this, i.getName()+i.getpassword()+iscorrect, Toast.LENGTH_SHORT).show();
+                                    iscorrect = true;
+                                    Toast.makeText(LoginActivity.this, "111111111111111111"+"2"+i.getisadmin(), Toast.LENGTH_SHORT).show();
+                                    if(i.getisadmin().equals("1")==true) {flag=true;Toast.makeText(LoginActivity.this, "111111111111111111", Toast.LENGTH_SHORT).show();}
+                                    Toast.makeText(LoginActivity.this, i.getName() + i.getpassword() + iscorrect, Toast.LENGTH_SHORT).show();
                                     //Intent intent = new Intent(LoginActivity.this, MainscannerActivity.class);
-                                   // startActivity(intent);
+                                    // startActivity(intent);
                                 }
-                                if(!iscorrect) Toast.makeText(LoginActivity.this, "密码错误!", Toast.LENGTH_SHORT).show();
-                                if(iscorrect) Toast.makeText(LoginActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
+                                if (!iscorrect) {
+                                    Toast.makeText(LoginActivity.this, "密码错误!", Toast.LENGTH_SHORT).show();
+                                }
+                                if (iscorrect){
+
+                                Toast.makeText(LoginActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(LoginActivity.this,MainscannerActivity.class);
+                                    Intent intent2 = new Intent(LoginActivity.this,Main2Activity.class);
+                                    if(flag)
+                                    startActivity(intent);
+                                    else startActivity(intent2);
+
+                                }
                             }
                         }
                     });
 
                 }
+
+
+
             }
         });
         ActionBar actionBar = getSupportActionBar();

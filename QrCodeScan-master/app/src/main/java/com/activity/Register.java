@@ -34,6 +34,7 @@ public class Register extends AppCompatActivity {
                 p2.setName(name.getText().toString());
                 p2.setpassword(password.getText().toString());
                 p2.setEmail(email.getText().toString());
+                p2.setisadmin("0");
                 p2.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId,BmobException e) {

@@ -2,9 +2,9 @@ package com.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.images.WebImage;
 import com.google.zxing.WriterException;
 import com.google.zxing.activity.CaptureActivity;
 import com.google.zxing.encoding.EncodingHandler;
@@ -30,7 +29,8 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class MainscannerActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
+
     Button tiaozhuan;
     Button to_register;
     @BindView(R.id.openQrCodeScan)
@@ -52,29 +52,31 @@ public class MainscannerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
 
         TextView mm=(TextView) findViewById(R.id.outText);
         if(st.isadmin==1)
-        mm.setVisibility(View.VISIBLE);
+            mm.setVisibility(View.VISIBLE);
         else
-        mm.setVisibility(View.INVISIBLE);
+            mm.setVisibility(View.INVISIBLE);
 
+        Button qq=(Button) findViewById(R.id.CreateQrCode);
 
+            qq.setVisibility(View.INVISIBLE);
         tiaozhuan=(Button)findViewById(R.id.tiaozhuan);
         to_register=(Button)findViewById(R.id.to_register);
         tiaozhuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainscannerActivity.this,LoginActivity.class);
+                Intent intent = new Intent(Main2Activity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
         to_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainscannerActivity.this,Register.class);
+                Intent intent = new Intent(Main2Activity.this,Register.class);
                 startActivity(intent);
             }
         });
@@ -88,15 +90,15 @@ public class MainscannerActivity extends AppCompatActivity {
             @Override
             public void done(String objectId,BmobException e) {
                 if(e==null){
-                  //  Toast("添加数据成功，返回objectId为："+objectId);
+                    //  Toast("添加数据成功，返回objectId为："+objectId);
                 }else{
-                 //   Toast("创建数据失败：" + e.getMessage());
+                    //   Toast("创建数据失败：" + e.getMessage());
                 }
             }
         });
         ButterKnife.bind(this);
 
-       ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
             actionBar.hide();
 
@@ -146,7 +148,7 @@ public class MainscannerActivity extends AppCompatActivity {
             case R.id.openQrCodeScan:
                 //打开二维码扫描界面
                 if(CommonUtil.isCameraCanUse()){
-                    Intent intent = new Intent(MainscannerActivity.this, CaptureActivity.class);
+                    Intent intent = new Intent(Main2Activity.this, CaptureActivity.class);
                     startActivityForResult(intent, REQUEST_CODE);
                 }else{
                     Toast.makeText(this,"请打开此应用的摄像头权限！",Toast.LENGTH_SHORT).show();
@@ -226,7 +228,7 @@ public class MainscannerActivity extends AppCompatActivity {
             String scanResult = bundle.getString("qr_scan_result");
             //将扫描出的信息显示出来
             qrCodeText.setText(scanResult);
-            Intent intent = new Intent(MainscannerActivity.this, WebActivity.class);
+            Intent intent = new Intent(Main2Activity.this, WebActivity.class);
             intent.putExtra("web_scanResult",scanResult);
             startActivity(intent);
         }

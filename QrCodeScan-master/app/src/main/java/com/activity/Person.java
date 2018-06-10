@@ -8,6 +8,20 @@ import cn.bmob.v3.BmobObject;
 
 public class Person extends BmobObject {
     private String name;
+    public int num;
+    public int getnum() {
+        return num;
+    }
+    public void setnum(int num1) {
+        this.num = num1;
+    }
+    private String isadmin;
+    public void setisadmin(String name) {
+        this.isadmin = name;
+    }
+    public String getisadmin(){
+        return isadmin;
+    }
     private String address;
     private String password;
     private String email;
@@ -17,10 +31,10 @@ public class Person extends BmobObject {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAddress() {
+    public String getaddress() {
         return address;
     }
-    public void setAddress(String address) {
+    public void setaddress(String address) {
         this.address = address;
     }
 
