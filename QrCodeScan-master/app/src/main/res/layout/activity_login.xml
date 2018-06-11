@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录12306"
+        android:text="登录"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:gravity="center"
@@ -102,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/zhuce"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

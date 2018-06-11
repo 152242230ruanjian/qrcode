@@ -27,9 +27,10 @@ public class  LoginActivity extends AppCompatActivity {
     private SharedPreferences pref;
     private CheckBox rememberPass;
     private SharedPreferences.Editor editor;
-    EditText edit_yhm;
-    EditText edit_mm;
+    private EditText edit_yhm;
+    private EditText edit_mm;
     boolean iscorrect;boolean flag;
+    private Button login,zhuce;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,8 @@ public class  LoginActivity extends AppCompatActivity {
         pref= PreferenceManager.getDefaultSharedPreferences(this);
         edit_yhm=(EditText)findViewById(R.id.edit_yhm);
         edit_mm=(EditText)findViewById(R.id.edit_mima);
-        Button login=(Button)findViewById(R.id.login);
+        login=(Button)findViewById(R.id.login);
+        zhuce=(Button)findViewById(R.id.zhuce);
         rememberPass=(CheckBox) findViewById(R.id.remember_pass);
         iscorrect=false;
 
@@ -121,11 +123,16 @@ public class  LoginActivity extends AppCompatActivity {
                                 if (iscorrect){
 
                                 Toast.makeText(LoginActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this,MainscannerActivity.class);
-                                    Intent intent2 = new Intent(LoginActivity.this,Main2Activity.class);
-                                    if(flag)
-                                    startActivity(intent);
-                                    else startActivity(intent2);
+
+
+                                    if(flag) {
+                                        Intent intent = new Intent(LoginActivity.this,MainscannerActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        Intent intent2 = new Intent(LoginActivity.this,Main2Activity.class);
+                                        startActivity(intent2);
+                                    }
 
                                 }
                             }
@@ -136,6 +143,13 @@ public class  LoginActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+        zhuce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,Register.class);
+                startActivity(intent);
             }
         });
         ActionBar actionBar = getSupportActionBar();
