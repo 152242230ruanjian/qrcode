@@ -18,7 +18,7 @@ public class LoginImageActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(LoginImageActivity.this,LoginActivity.class);
+                Intent intent = new Intent(LoginImageActivity.this,MainscannerActivity.class);
                 startActivity(intent);
                 finish();
             }

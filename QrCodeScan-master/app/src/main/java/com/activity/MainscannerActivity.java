@@ -41,8 +41,7 @@ public class MainscannerActivity extends AppCompatActivity {
     Button CreateQrCode;
     @BindView(R.id.QrCode)
     ImageView QrCode;
-    @BindView(R.id.qrCodeText)
-    TextView qrCodeText;
+
 
     //打开扫描界面请求码
     private int REQUEST_CODE = 0x01;
@@ -225,7 +224,7 @@ public class MainscannerActivity extends AppCompatActivity {
             Bundle bundle = data.getExtras();
             String scanResult = bundle.getString("qr_scan_result");
             //将扫描出的信息显示出来
-            qrCodeText.setText(scanResult);
+            //qrCodeText.setText(scanResult);
             Intent intent = new Intent(MainscannerActivity.this, WebActivity.class);
             intent.putExtra("web_scanResult",scanResult);
             startActivity(intent);
