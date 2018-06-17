@@ -97,13 +97,13 @@ public class  LoginActivity extends AppCompatActivity {
                     query.addWhereEqualTo("name", edit_yhm.getText());
                     query.addWhereEqualTo("password", edit_mm.getText());
                //     query.addWhereEqualTo("isadmin", "1");
-                    Toast.makeText(LoginActivity.this,edit_yhm.getText()+"   "+edit_mm.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this,edit_yhm.getText()+"   "+edit_mm.getText(), Toast.LENGTH_SHORT).show();
                     //query.setLimit(50);
                     query.findObjects(new FindListener<Person>() {
                         @Override
                         public void done(List<Person> object, BmobException e) {
                             if (e == null) {
-                                Toast.makeText(LoginActivity.this, "AAAA+bbcccc" + "  " + object.size(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(LoginActivity.this, "AAAA+bbcccc" + "  " + object.size(), Toast.LENGTH_SHORT).show();
                                 //toast("查询年龄6-29岁之间，姓名以'y'或者'e'结尾的人个数："+object.size());
                                 //Toast.makeText(tickets.this,String.valueOf(object.size()), Toast.LENGTH_SHORT).show();
                                 for (Person i : object) {
@@ -111,9 +111,9 @@ public class  LoginActivity extends AppCompatActivity {
                                     //Toast.makeText(tickets.this,i.getName(), Toast.LENGTH_SHORT).show();
                                     //if (edit_mm.getText().toString()==i.getpassword())
                                     iscorrect = true;
-                                    Toast.makeText(LoginActivity.this, "111111111111111111"+"2"+i.getisadmin(), Toast.LENGTH_SHORT).show();
-                                    if(i.getisadmin().equals("1")==true) {flag=true;Toast.makeText(LoginActivity.this, "111111111111111111", Toast.LENGTH_SHORT).show();}
-                                    Toast.makeText(LoginActivity.this, i.getName() + i.getpassword() + iscorrect, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(LoginActivity.this, "111111111111111111"+"2"+i.getisadmin(), Toast.LENGTH_SHORT).show();
+                                    //if(i.getisadmin().equals("1")==true) {flag=true;Toast.makeText(LoginActivity.this, "111111111111111111", Toast.LENGTH_SHORT).show();}
+                                    //Toast.makeText(LoginActivity.this, i.getName() + i.getpassword() + iscorrect, Toast.LENGTH_SHORT).show();
                                     //Intent intent = new Intent(LoginActivity.this, MainscannerActivity.class);
                                     // startActivity(intent);
                                 }
