@@ -5,5 +5,5 @@ package com.activity;
  */
 
 public class st {
-    static int isadmin;
+    static String isadmin;
 }

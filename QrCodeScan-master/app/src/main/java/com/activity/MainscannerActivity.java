@@ -41,7 +41,7 @@ public class MainscannerActivity extends AppCompatActivity {
     Button CreateQrCode;
     @BindView(R.id.QrCode)
     ImageView QrCode;
-
+    TextView mm;
 
     //打开扫描界面请求码
     private int REQUEST_CODE = 0x01;
@@ -52,13 +52,13 @@ public class MainscannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String nnn="1";
 
-
-        TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        mm=(TextView) findViewById(R.id.outText);
+        /*if(st.isadmin==1)
         mm.setVisibility(View.VISIBLE);
         else
-        mm.setVisibility(View.INVISIBLE);
+        mm.setVisibility(View.INVISIBLE);*/
 
 
         tiaozhuan=(Button)findViewById(R.id.tiaozhuan);
@@ -100,7 +100,7 @@ public class MainscannerActivity extends AppCompatActivity {
             actionBar.hide();
 
         BmobQuery<Person> query = new BmobQuery<Person>();
-        query.addWhereEqualTo("name", "onlyuse");
+        query.addWhereEqualTo("name", "user3");
 
         // query.addWhereEqualTo("password", edit_mm.getText());
         // query.addWhereEqualTo("isadmin", "0");
@@ -115,7 +115,7 @@ public class MainscannerActivity extends AppCompatActivity {
                     //Toast.makeText(tickets.this,String.valueOf(object.size()), Toast.LENGTH_SHORT).show();
                     for (Person i : object) {
                         i.getaddress();
-                        TextView mm=(TextView) findViewById(R.id.outText);
+                        //TextView mm=(TextView) findViewById(R.id.outText);
                         mm.setText(""+i.getnum());
                         //   TextView mm=(TextView) findViewById(R.id.outText);
                         //   mm.setText(i.getaddress());
@@ -137,7 +137,7 @@ public class MainscannerActivity extends AppCompatActivity {
     @OnClick({R.id.openQrCodeScan, R.id.CreateQrCode})
     public void onClick(View view) {
         TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        if(st.isadmin=="1")
             mm.setVisibility(View.VISIBLE);
         else
             mm.setVisibility(View.INVISIBLE);
@@ -164,7 +164,7 @@ public class MainscannerActivity extends AppCompatActivity {
 
 
                             BmobQuery<Person> query = new BmobQuery<Person>();
-                            query.addWhereEqualTo("name", "onlyuse");
+                            query.addWhereEqualTo("name", "user3");
 
                             // query.addWhereEqualTo("password", edit_mm.getText());
                             // query.addWhereEqualTo("isadmin", "0");
@@ -179,7 +179,7 @@ public class MainscannerActivity extends AppCompatActivity {
                                         //Toast.makeText(tickets.this,String.valueOf(object.size()), Toast.LENGTH_SHORT).show();
                                         for (Person i : object) {
                                             i.getaddress();
-                                            ;
+
                                             TextView mm=(TextView) findViewById(R.id.outText);
                                             mm.setText(""+(i.num+1));
 
@@ -214,7 +214,7 @@ public class MainscannerActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        if(st.isadmin=="1")
             mm.setVisibility(View.VISIBLE);
         else
             mm.setVisibility(View.INVISIBLE);

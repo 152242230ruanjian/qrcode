@@ -112,7 +112,7 @@ public class  LoginActivity extends AppCompatActivity {
                                     //if (edit_mm.getText().toString()==i.getpassword())
                                     iscorrect = true;
                                     //Toast.makeText(LoginActivity.this, "111111111111111111"+"2"+i.getisadmin(), Toast.LENGTH_SHORT).show();
-                                    //if(i.getisadmin().equals("1")==true) {flag=true;Toast.makeText(LoginActivity.this, "111111111111111111", Toast.LENGTH_SHORT).show();}
+                                    if(i.getisadmin().equals("1")==true) {flag=true;}
                                     //Toast.makeText(LoginActivity.this, i.getName() + i.getpassword() + iscorrect, Toast.LENGTH_SHORT).show();
                                     //Intent intent = new Intent(LoginActivity.this, MainscannerActivity.class);
                                     // startActivity(intent);

@@ -56,7 +56,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
         TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        if(st.isadmin=="1")
             mm.setVisibility(View.VISIBLE);
         else
             mm.setVisibility(View.INVISIBLE);
@@ -140,7 +140,7 @@ public class Main2Activity extends AppCompatActivity {
     @OnClick({R.id.openQrCodeScan, R.id.CreateQrCode})
     public void onClick(View view) {
         TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        if(st.isadmin=="1")
             mm.setVisibility(View.VISIBLE);
         else
             mm.setVisibility(View.INVISIBLE);
@@ -217,7 +217,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView mm=(TextView) findViewById(R.id.outText);
-        if(st.isadmin==1)
+        if(st.isadmin=="1")
             mm.setVisibility(View.VISIBLE);
         else
             mm.setVisibility(View.INVISIBLE);
